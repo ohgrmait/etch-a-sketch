@@ -4,6 +4,8 @@ const container = document.querySelector(".container");
 
 const changeButton = document.querySelector(".change");
 
+const randomBox = document.querySelector("#randomize");
+
 changeButton.addEventListener("click", () => {
   let newSize;
   
@@ -20,6 +22,20 @@ changeButton.addEventListener("click", () => {
   createGrid(newSize);
 })
 
+function getRandomIntInclusive(min, max) {
+  // Taken from https://shorturl.at/TSjlB
+  const minCeiled = Math.ceil(min);
+  const maxFloored = Math.floor(max);
+  return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+}
+
+function randomizeColors(e) {
+  const red = getRandomIntInclusive(0, 255);
+  const green = getRandomIntInclusive(0, 255);
+  const blue = getRandomIntInclusive(0, 255);
+  e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
+}
+
 function createGrid(size = DEFAULT_SIZE) {
   for (let i = 0; i < size; i++) {
     const grid = document.createElement("div");
@@ -29,8 +45,12 @@ function createGrid(size = DEFAULT_SIZE) {
       const square = document.createElement("div");
       square.classList.toggle("square");
   
-      square.addEventListener("mouseenter", () => {
-        square.style.backgroundColor = "black";
+      square.addEventListener("mouseenter", function (e) {
+        if (randomBox.checked === true) {
+          randomizeColors(e);
+        } else {
+          e.target.style.backgroundColor = "black";
+        }
       });
       
       grid.appendChild(square);
