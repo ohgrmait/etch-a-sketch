@@ -11,6 +11,8 @@ changeButton.addEventListener("click", () => {
     newSize = +prompt("Number of squares per side for the new grid", 16);
     if (newSize >= 16 && newSize <= 100) {
       break;
+    } else {
+      alert("Only values between 16 and 100 (both inclusive) are allowed.");
     }
   }
 
