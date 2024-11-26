@@ -6,6 +6,8 @@ const changeButton = document.querySelector(".change");
 
 const randomBox = document.querySelector("#randomize");
 
+const darkenBox = document.querySelector("#darkening");
+
 changeButton.addEventListener("click", () => {
   let newSize;
   
@@ -20,7 +22,7 @@ changeButton.addEventListener("click", () => {
 
   container.replaceChildren();
   createGrid(newSize);
-})
+});
 
 function getRandomIntInclusive(min, max) {
   // Taken from https://shorturl.at/TSjlB
@@ -36,6 +38,14 @@ function randomizeColors(e) {
   e.target.style.backgroundColor = `rgb(${red}, ${green}, ${blue})`;
 }
 
+function darkeningColors(e) {
+  let opacity = window.getComputedStyle(e.target).opacity;
+  if (opacity > 0) {
+    opacity -= 0.1;
+    e.target.style.opacity = opacity;
+  }
+}
+
 function createGrid(size = DEFAULT_SIZE) {
   for (let i = 0; i < size; i++) {
     const grid = document.createElement("div");
@@ -46,10 +56,14 @@ function createGrid(size = DEFAULT_SIZE) {
       square.classList.toggle("square");
   
       square.addEventListener("mouseenter", function (e) {
+        if (darkenBox.checked === true) {
+          darkeningColors(e);
+        }
+
         if (randomBox.checked === true) {
           randomizeColors(e);
         } else {
-          e.target.style.backgroundColor = "black";
+          e.target.style.backgroundColor = "orange";
         }
       });
       

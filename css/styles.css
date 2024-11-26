@@ -4,6 +4,7 @@
   height: 500px;
   display: flex;
   flex-direction: column;
+  background-color: black;
 }
 
 .grid {
@@ -13,5 +14,6 @@
 
 .square {
   border: 1px solid white;
+  background-color: white;
   flex: 1;
 }
