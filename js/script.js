@@ -1,19 +1,41 @@
+const DEFAULT_SIZE = 16;
+
 const container = document.querySelector(".container");
 
-for (let i = 0; i < 16; i++) {
-  const grid = document.createElement("div");
-  grid.classList.toggle("grid");
+const changeButton = document.querySelector(".change");
 
-  for (let j = 0; j < 16; j++) {
-    const square = document.createElement("div");
-    square.classList.toggle("square");
-
-    square.addEventListener("mouseenter", () => {
-      square.style.backgroundColor = "black";
-    });
-    
-    grid.appendChild(square);
+changeButton.addEventListener("click", () => {
+  let newSize;
+  
+  while (true) {
+    newSize = +prompt("Number of squares per side for the new grid", 16);
+    if (newSize >= 16 && newSize <= 100) {
+      break;
+    }
   }
 
-  container.appendChild(grid);
+  container.replaceChildren();
+  createGrid(newSize);
+})
+
+function createGrid(size = DEFAULT_SIZE) {
+  for (let i = 0; i < size; i++) {
+    const grid = document.createElement("div");
+    grid.classList.toggle("grid");
+  
+    for (let j = 0; j < size; j++) {
+      const square = document.createElement("div");
+      square.classList.toggle("square");
+  
+      square.addEventListener("mouseenter", () => {
+        square.style.backgroundColor = "black";
+      });
+      
+      grid.appendChild(square);
+    }
+  
+    container.appendChild(grid);
+  }
 }
+
+createGrid();
