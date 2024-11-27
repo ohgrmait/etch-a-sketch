@@ -2,14 +2,19 @@ const DEFAULT_SIZE = 16;
 
 const container = document.querySelector(".container");
 
+const caption = document.querySelector(".caption");
+
 const changeButton = document.querySelector(".change");
+
+const eraseButton = document.querySelector(".erase");
 
 const randomBox = document.querySelector("#randomize");
 
 const darkenBox = document.querySelector("#darkening");
 
+let newSize = DEFAULT_SIZE;
+
 changeButton.addEventListener("click", () => {
-  let newSize;
   
   while (true) {
     newSize = +prompt("Number of squares per side for the new grid", 16);
@@ -20,6 +25,11 @@ changeButton.addEventListener("click", () => {
     }
   }
 
+  container.replaceChildren();
+  createGrid(newSize);
+});
+
+eraseButton.addEventListener("click", () => {
   container.replaceChildren();
   createGrid(newSize);
 });
@@ -47,6 +57,8 @@ function darkeningColors(e) {
 }
 
 function createGrid(size = DEFAULT_SIZE) {
+  caption.textContent = `Grid size: ${size} x ${size}`;
+
   for (let i = 0; i < size; i++) {
     const grid = document.createElement("div");
     grid.classList.toggle("grid");
@@ -63,7 +75,7 @@ function createGrid(size = DEFAULT_SIZE) {
         if (randomBox.checked === true) {
           randomizeColors(e);
         } else {
-          e.target.style.backgroundColor = "orange";
+          e.target.style.backgroundColor = "lightgrey";
         }
       });
       
