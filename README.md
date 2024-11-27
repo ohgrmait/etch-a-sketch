@@ -17,7 +17,7 @@ This project shows a browser version of a GUI-based sketching interface that res
   <p>This is a screenshot of the index page.</p>
 
   <img src="./img/screenshots/index-page2.png" alt="Another screenshot of the index page">
-  <p>This is another screenshot of the index page of the website.</p>
+  <p>This is another screenshot of the index page.</p>
 
   <img src="./img/demo/demo-part1.gif" alt="Screen cast of the progressive darkening effect in single color mode">
   <p>This is a screen cast of the progressive darkening effect (single color).</p>
