@@ -10,10 +10,13 @@
 <body>
   <h1>Etch A Sketch</h1>
   <div class="buttons">
-    <button class="change">Change grid</button>
+    <div class="clickers">
+      <button class="change">Change grid</button>
+      <button class="erase">Erase grid</button>
+    </div>
     <form class="modifications">
       <fieldset>
-        <legend>Select the modification</legend>
+        <legend>Select your choice</legend>
         <input type="checkbox" id="randomize" name="modification">
         <label for="randomize">Randomize</label>
         <input type="checkbox" id="darkening" name="modification">
@@ -22,5 +25,6 @@
     </form>
   </div>
   <div class="container"></div>
+  <div class="caption"></div>
 </body>
 </html>
