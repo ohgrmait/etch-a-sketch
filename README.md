@@ -32,6 +32,7 @@ This project shows a browser version of a GUI-based sketching interface that res
 ## Technologies
 - ***Git***
 - ***CLI***
+- ***CSS***
 - ***HTML***
 - ***GitHub***
 - ***JavaScript***
